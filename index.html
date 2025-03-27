@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lawn Mowing Cost Estimator</title>
+    <link rel="icon" href="images/grass_icon.png" sizes="32x32" type="image/png" />
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav>
+      <div class="title">GrassGauge - Lawn Mowing Cost Estimator</div>
+      <button id="toggleControls">Toggle Controls</button>
+      <div class="subtitle">Draw polygons & set cost per sq ft</div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Controls Card -->
+      <div class="controls-card">
+        <h2>Search & Pricing</h2>
+
+        <input
+          id="addressInput"
+          type="text"
+          placeholder="Enter service address"
+        />
+
+        <div class="error-message" id="errorMessage">
+          Invalid cost. Please enter a value greater than 0.
+        </div>
+
+        <label for="costPerSqFoot">Cost per Sq Ft ($)</label>
+        <input
+          type="number"
+          id="costPerSqFoot"
+          step="0.01"
+          min="0"
+          value="0.05"
+        />
+
+        <!-- Table for polygon areas -->
+        <table class="polygon-table" id="polygonTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Area (sq ft)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows inserted dynamically -->
+          </tbody>
+        </table>
+
+        <p class="total-area" id="totalArea">Total Area: 0 sq ft</p>
+        <p class="total-cost" id="totalCost">Total Cost: $0.00</p>
+      </div>
+
+      <!-- The Map -->
+      <div id="map"></div>
+    </div>
+
+    <!-- Hide the Control Card -->
+        <script>
+      document.getElementById("toggleControls").addEventListener("click", function () {
+        const controlsCard = document.querySelector(".controls-card");
+        controlsCard.classList.toggle("hidden");
+      });
+    </script>
+    
+    <!-- Load Google Maps API -->
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-mTdcex7acAbBcSphMhl8yrNpnBzEKPc&loading=async&libraries=drawing,places,geometry&callback=initMap">
+    </script>
+
+    <!-- Load scripts in an order that ensures dependencies are available -->
+    <script src="map.js"></script>
+    <script src="polygonTable.js"></script>
+    <script src="calculation.js"></script>
+    <script src="drawing.js"></script>
+    <script src="autocomplete.js"></script>
+  </body>
+</html>
