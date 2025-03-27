@@ -1,0 +1,150 @@
+/* Reset & basic box-sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Top Navbar / Header */
+  nav {
+    width: 100%;
+    background-color: #0f4208;
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  nav .subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* Main container to hold the map & the floating card */
+  .main-container {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 48px); /* subtract nav height */
+  }
+  
+  /* The floating card for controls */
+  .controls-card {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    left: 10px;
+    width: 300px;
+    max-width: 95%;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 16px;
+    z-index: 10;
+  }
+  
+  .controls-card h2 {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .controls-card label {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  
+  .controls-card input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error-message {
+    color: #d8000c;
+    background-color: #ffd2d2;
+    padding: 6px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: none; /* hidden by default */
+  }
+  
+  .polygon-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  .polygon-table th,
+  .polygon-table td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    font-size: 14px;
+    text-align: left;
+  }
+  .polygon-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .remove-btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .remove-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .total-area,
+  .total-cost {
+    font-weight: 600;
+  }
+
+  .hidden { 
+	display: none !important; 
+  }
+  
+  /* Map container */
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Address search input (for Autocomplete) */
+  #addressInput {
+    margin-bottom: 10px;
+  }
+  
+  /* Adjust controls card for mobile devices */
+@media (max-width: 768px) {
+  .controls-card {
+    width: 90%; /* Make it wider */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px; /* More spacing */
+    padding: 20px; /* Bigger padding */
+    font-size: 18px; /* Increase text size */
+  }
+
+  .controls-card h2 {
+    font-size: 20px;
+  }
+
+  .controls-card input {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
